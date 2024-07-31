@@ -1,0 +1,76 @@
+{
+  "_useAdvert-Dn0vfqZA.js": {
+    "file": "assets/useAdvert-Dn0vfqZA.js",
+    "name": "useAdvert",
+    "imports": [
+      "resources/js/app.ts"
+    ]
+  },
+  "_useRules-CkGS_ocY.js": {
+    "file": "assets/useRules-CkGS_ocY.js",
+    "name": "useRules",
+    "imports": [
+      "resources/js/app.ts"
+    ]
+  },
+  "resources/js/app.ts": {
+    "file": "assets/app-B0wpD2Za.js",
+    "name": "app",
+    "src": "resources/js/app.ts",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/views/adverts/AdvertsList.vue",
+      "resources/js/views/adverts/AdvertCard.vue",
+      "resources/js/views/adverts/AdvertCreate.vue"
+    ],
+    "css": [
+      "assets/app-CeJ9W_dk.css"
+    ]
+  },
+  "resources/js/views/adverts/AdvertCard.vue": {
+    "file": "assets/AdvertCard-8EwtBmpb.js",
+    "name": "AdvertCard",
+    "src": "resources/js/views/adverts/AdvertCard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.ts",
+      "_useAdvert-Dn0vfqZA.js",
+      "_useRules-CkGS_ocY.js"
+    ],
+    "css": [
+      "assets/AdvertCard-BXon_oHg.css"
+    ]
+  },
+  "resources/js/views/adverts/AdvertCreate.vue": {
+    "file": "assets/AdvertCreate-Cn6wXqPH.js",
+    "name": "AdvertCreate",
+    "src": "resources/js/views/adverts/AdvertCreate.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.ts",
+      "_useAdvert-Dn0vfqZA.js",
+      "_useRules-CkGS_ocY.js"
+    ],
+    "css": [
+      "assets/AdvertCreate-BQBEXAGU.css"
+    ]
+  },
+  "resources/js/views/adverts/AdvertsList.vue": {
+    "file": "assets/AdvertsList-Bf6u0D9A.js",
+    "name": "AdvertsList",
+    "src": "resources/js/views/adverts/AdvertsList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.ts",
+      "_useAdvert-Dn0vfqZA.js"
+    ],
+    "css": [
+      "assets/AdvertsList-BC2GHjU7.css"
+    ]
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-BKOZIlKX.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}

@@ -1,0 +1,68 @@
+version: "1.0"
+services:
+  app:
+    build:
+      args:
+        user: devsam
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: adv_service_docker
+    container_name: adv_service-app
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: "client_host=host.docker.internal"
+      PHP_IDE_CONFIG: "serverName=${PROJECT_NAME}"
+      STARTUP_WAIT_FOR_SERVICES: "true"
+      CONTAINER_ROLE: app
+      RUN_COMPOSER_INSTALL: "true"
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - adv_service_docker
+    command: >
+      sh -c "
+      php artisan migrate --force &&
+      php artisan db:seed --force &&
+      php-fpm
+      "
+
+  mysql:
+    image: mysql:8.0
+    container_name: adv_service-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./docker-entrypoint.sh:/docker-entrypoint.sh
+    networks:
+      - adv_service_docker
+    ports:
+      - "3336:3306"
+
+  nginx:
+    image: nginx:1.17-alpine
+    container_name: adv_service-nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - adv_service_docker
+    depends_on:
+      - app
+
+
+networks:
+  adv_service_docker:
+    driver: bridge

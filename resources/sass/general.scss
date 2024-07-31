@@ -1,0 +1,32 @@
+// set background image
+#app {
+  // background: url('/public/assets/images/bg-img.webp') no-repeat;
+  // background-size: cover;
+   background-image: radial-gradient(#e3e3e3, #fff, #d9d9d9);
+}
+
+
+// no underlines for anchors
+a {
+  text-decoration: none;
+}
+
+
+// class to indicate pointers
+.hover-pointed {
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+
+// colored rows for tables
+.el-table {
+  --el-table-border-color: black;
+  .warning-row {
+    --el-table-tr-bg-color: var(--el-color-warning-light-9);
+  }
+  .danger-row {
+    --el-table-tr-bg-color: var(--el-color-danger-light-9);
+  }
+}
